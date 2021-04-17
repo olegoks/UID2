@@ -38,8 +38,8 @@ function getNextMessage() {
 
     }
 
-    getNextMessage.message_index %= getNextMessage.quotes.length;
     getNextMessage.message_index++;
+    getNextMessage.message_index %= getNextMessage.quotes.length;
     localStorage.setItem('message_index', getNextMessage.message_index);
     return '\"' + getNextMessage.quotes[getNextMessage.message_index] + '\"';
 
@@ -89,7 +89,7 @@ quote_panel.addEventListener('mouseover', (event) => {
 
         }, animation_duration);
 
-    }, 3000);
+    }, 2000);
 
 });
 

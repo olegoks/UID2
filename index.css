@@ -15,6 +15,7 @@
 
 #city {
     max-width: 20vw;
+    outline: none;
 }
 
 body {

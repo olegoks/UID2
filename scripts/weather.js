@@ -29,8 +29,8 @@ async function changeWeatherInfo() {
 
     temperature.textContent = `${data.main.temp}°C`;
     weatherDescription.textContent = data.weather[0].description;
-    humidity.innerHTML = `, ${data.main.humidity}%`;
-    wind.innerHTML = `, ${data.wind.speed} m/s`;
+    humidity.innerHTML = `${data.main.humidity}%`;
+    wind.innerHTML = `${data.wind.speed} m/s`;
 
 }
 
