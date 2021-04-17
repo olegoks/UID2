@@ -1,0 +1,107 @@
+* {
+    /*border-box говорит браузеру учитывать любые границы и внутренние отступы в 
+    значениях, которые вы указываете в ширине и высоте элемента.*/
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+#weather_box {
+    position: absolute;
+    right: 0px;
+    top: 0px;
+    font-size: 2rem;
+}
+
+#city {
+    max-width: 20vw;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    /*Масштабирует изображение как можно больше c сохранением пропорций изображения*/
+    background-size: cover;
+    background-image: url(assets/images/overlay.png);
+    transition: background-image 2s ease-in-out;
+    color: white;
+}
+
+#central_content {
+    font-family: 'Quicksand', sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+#user_name {
+    outline: none;
+}
+
+#greeting {
+    font-size: 3rem;
+}
+
+#question_text {
+    font-size: 2rem;
+}
+
+#focus_text {
+    font-size: 2rem;
+}
+
+#next_image {
+    position: absolute;
+    bottom: 0px;
+    right: 0px;
+}
+
+.arrow_button {
+    color: white;
+    width: 3vw;
+    height: 7vh;
+    background-color: rgba(0, 0, 0, 0.3);
+    border-radius: 5px;
+    border: 0px;
+    font-size: 2rem;
+    outline: none;
+}
+
+.arrow_button:hover {
+    background-color: rgba(0, 0, 0, 0.7);
+}
+
+#time_text {
+    font-size: 8rem;
+}
+
+#date_text {
+    font-size: 3rem;
+}
+
+#quote {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    align-items: center;
+    position: absolute;
+    height: 5vh;
+    bottom: 1vh;
+    transition: height 0.25s ease-in;
+}
+
+#next_quote {
+    display: none;
+}
+
+#quote_text {
+    margin-right: 1vh;
+    margin-left: 1vh;
+    font-size: 2rem;
+    opacity: 0.9;
+}

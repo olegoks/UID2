@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="owfont-regular.css">
+    <link rel="stylesheet" href="index.css" />
+    <title>Momentum</title>
+</head>
+
+<body>
+    <section id="weather_box">
+        <i class="weather-icon owf"></i>
+        <span class="temperature"></span>
+        <span class="humidity"></span>
+        <span class="wind"></span>
+        <div class="weather-description"></div>
+        <div id="city" contenteditable="true"></div>
+    </section>
+
+    <section id="central_content">
+        <section id="time_date">
+            <time id="time_text"></time>
+            <p id="date_text"></p>
+        </section>
+
+        <section id="greeting">
+            <span id="greeting_text"></span>
+            <span id="user_name" contenteditable="true"></span>
+        </section>
+
+        <section id="focus">
+            <p id="question_text">What Is Your Focus For Today?</p>
+            <p id="focus_text" contenteditable="true"></p>
+        </section>
+    </section>
+
+    <section id="quote">
+        <span id="quote_text"></span>
+        <button id="next_quote" class="arrow_button">></button>
+    </section>
+
+    <script src="scripts/greeting.js" async></script>
+    <script src="scripts/weather.js" async></script>
+    <script src="scripts/time_date.js" async></script>
+    <script src="scripts/background.js" async></script>
+    <script src="scripts/quotes.js" async></script>
+    <script src="scripts/name.js" async></script>
+    <script src="scripts/focus.js" async></script>
+
+    <button id="next_image" class="arrow_button">></button>
+
+</body>
+
+</html>
