@@ -1,56 +1,31 @@
-function getNextMessage() {
+async function getNextMessage() {
 
-    if (typeof getNextMessage.quotes == 'undefined') {
+    const url = 'https://api.chucknorris.io/jokes/random';
+    const result = await fetch(url);
 
-        getNextMessage.quotes = [
+    if (!result.ok) {
 
-            "Nothing is as easy as it looks.",
-            "Everything takes longer than you think.",
-            "Anything that can go wrong will go wrong.",
-            "If there is a worse time for something to go wrong, it will happen then.",
-            "If anything simply cannot go wrong, it will anyway.",
-            "Left to themselves, things tend to go from bad to worse.",
-            "If everything seems to be going well, you have obviously overlooked something.",
-            "Nature always sides with the hidden flaw.",
-            "Mother nature is a bitch.",
-            "It is impossible to make anything foolproof because fools are so ingenious.",
-            "Whenever you set out to do something, something else must be done first.",
-            "Every solution breeds new problems.",
-            "Trust everybody ... then cut the cards.",
-            "Two wrongs are only the beginning.",
-            "If at first you don't succeed, destroy all evidence that you tried.",
-            "To succeed in politics, it is often necessary to rise above your principles.",
-            "Exceptions prove the rule ... and wreck the budget.",
-            "Success always occurs in private, and failure in full view."
-
-        ];
-
-        if (localStorage.getItem('message_index') == null) {
-
-            localStorage.setItem('message_index', 0);
-            getNextMessage.message_index = 0;
-
-        } else {
-
-            getNextMessage.message_index = localStorage.getItem('message_index');
-
-        }
+        return '\" API error.\"';
 
     }
 
-    getNextMessage.message_index++;
-    getNextMessage.message_index %= getNextMessage.quotes.length;
-    localStorage.setItem('message_index', getNextMessage.message_index);
-    return '\"' + getNextMessage.quotes[getNextMessage.message_index] + '\"';
+    const json = await result.json();
+
+    if (json.value.length > 100) {
+
+        return await getNextMessage();
+
+    }
+
+    return '\"' + json.value + '\"';
 
 }
 
-function setNewQuote() {
+async function setNewQuote() {
 
-    quote_text.textContent = getNextMessage();
+    quote_text.textContent = await getNextMessage();
 
 }
-
 
 const quote_panel = document.getElementById('quote');
 const quote_text = document.getElementById('quote_text');
@@ -85,7 +60,7 @@ quote_panel.addEventListener('mouseover', (event) => {
 
         setTimeout(() => {
 
-            quote_panel.style.height = '5vh';
+            quote_panel.style.height = '6vh';
 
         }, animation_duration);
 

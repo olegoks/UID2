@@ -25,6 +25,29 @@ function getCurrentDayPart() {
 
 }
 
+function getNextDayPart(day_part) {
+
+    if (day_part == 'night') {
+
+        return 'morning';
+
+    } else if (day_part == 'morning') {
+
+        return 'day';
+
+    } else if (day_part == 'day') {
+
+        return 'evening';
+
+
+    } else {
+
+        return 'night';
+
+    }
+
+}
+
 function newHour() {
 
     let now = new Date();
@@ -52,6 +75,23 @@ function newHour() {
 }
 
 const body = document.querySelector('body');
+let day_part = getCurrentDayPart();
+let img_index = 0;
+const next_img = document.getElementById('next_image');
+
+let images_names = ['01.jpg', '02.jpg', '03.jpg', '05.jpg',
+    '06.jpg', '07.jpg', '08.jpg', '09.jpg', '10.jpg',
+    '11.jpg', '12.jpg', '13.jpg', '14.jpg', '15.jpg',
+    '16.jpg', '17.jpg', '18.jpg', '19.jpg', '20.jpg'
+];
+
+
+function shuffle(array) {
+    array.sort(() => Math.random() - 0.5);
+}
+
+
+shuffle(images_names);
 
 function showImage(path) {
 
@@ -65,17 +105,9 @@ function showImage(path) {
 
 }
 
-let img_index = 0;
-
 function changeBackgroundImage() {
 
     let cur_day_part = getCurrentDayPart();
-
-    const images_names = ['01.jpg', '02.jpg', '03.jpg', '05.jpg',
-        '06.jpg', '07.jpg', '08.jpg', '09.jpg', '10.jpg',
-        '11.jpg', '12.jpg', '13.jpg', '14.jpg', '15.jpg',
-        '16.jpg', '17.jpg', '18.jpg', '19.jpg', '20.jpg'
-    ];
 
     img_index %= images_names.length;
 
@@ -96,11 +128,28 @@ function maybeChangeBackgroundImage() {
         changeBackgroundImage();
 
     }
+}
+
+setInterval(maybeChangeBackgroundImage, 1000);
+
+function nextDayBackground() {
+
+    if (img_index == images_names.length - 1) {
+
+        day_part = getNextDayPart(day_part);
+
+    }
+
+    img_index %= images_names.length;
+
+    const images_path = '/assets/images/' + day_part + '/';
+
+    const full_img_path = images_path + images_names[img_index];
+
+    showImage(full_img_path);
+
+    img_index++;
 
 }
 
-const next_img = document.getElementById('next_image');
-
-next_img.addEventListener('click', changeBackgroundImage);
-
-setInterval(maybeChangeBackgroundImage, 1000);
+next_img.addEventListener('click', nextDayBackground);

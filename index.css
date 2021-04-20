@@ -82,7 +82,7 @@ body {
 }
 
 #date_text {
-    font-size: 3rem;
+    font-size: 4rem;
 }
 
 #quote {
@@ -91,7 +91,7 @@ body {
     flex-direction: column;
     align-items: center;
     position: absolute;
-    height: 5vh;
+    height: 6vh;
     bottom: 1vh;
     transition: height 0.25s ease-in;
 }
@@ -101,8 +101,9 @@ body {
 }
 
 #quote_text {
+    max-height: 3vh;
     margin-right: 1vh;
     margin-left: 1vh;
-    font-size: 2rem;
+    font-size: 1.3rem;
     opacity: 0.9;
 }
